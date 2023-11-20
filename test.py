@@ -13,6 +13,10 @@ pool = ClusterConnectionPool(startup_nodes=startup_nodes)
 # 创建redis集群客户端
 redis_client = RedisCluster(connection_pool=pool)
 
+# 数据写入测试
+# for i in range(100000000):
+#     redis_client.set(str(i), str(i))
+
 
 while True:
     if redis_client.set('session', '1', ex=10, nx=True):
@@ -23,3 +27,4 @@ while True:
         break
     time.sleep(1)
     print('aaaaaaaaaaaaaa')
+
